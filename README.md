@@ -22,38 +22,35 @@ The primary datasets used are as follows:
 
 
 ## example
+'''
 import os,sys
 os.environ['CUDA_VISIBLE_DEVICES'] = '2'
+
 from VARGG import running
 import scanpy as sc
 
 
 
-data_path = "/data/VARGG-main/data/DLPFC" #### to yo ur path
-data_name = '151673' #### project name
-save_path = "/data/VARGG-main/Results" #### save path
-n_domains = 7 ###### the number of spatial domains.
+data_path = "/data/VARGG-main/data/DLPFC"
 
-process = running(save_path = save_path,
-	pre_epochs = 1000, 
-	epochs = 1200, 
-	use_gpu = True)
+data_name = '151673' 
 
-###### Read in 10x Visium data, or user can read in themselves.
+save_path = "/data/VARGG-main/Results" 
+
+n_domains = 7 
+
+process = running(save_path = save_path,pre_epochs = 1000, epochs = 1200, se_gpu = True)
+
 adata = process._get_adata(platform="Visium", data_path=data_path, data_name=data_name)
 
-###### Segment the Morphological Image
 adata = process._get_image_crop(adata, data_name=data_name) 
 
-###### "use_morphological" defines whether to use morphological images.
 adata = process._get_augment(adata, spatial_type="KDTree", use_morphological=True)
 
 graph_dict = process._get_graph(adata.obsm["spatial"], distType = "KDTree")
 
-###### Enhanced data preprocessin
 data = process._data_process(adata, pca_n_comps =200)
 
-###### Training models
 Vargg_embed = process._fit(
 		data = data,
 		graph_dict = graph_dict,)
@@ -63,5 +60,5 @@ adata.obsm["VARGG_embed"] = Vargg_embed
 adata = process._get_cluster_data(adata, n_domains=n_domains, priori = True)
 
 
-# Spatial localization map of the spatial domain
 sc.pl.spatial(adata, color='VARGG_refine_domain', frameon=False,spot_size=150)
+'''
