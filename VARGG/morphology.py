@@ -38,34 +38,7 @@ class image_feature:
         vit_model.eval()
         return vit_model 
 
-    def load_cnn_model(
-        self,
-        ):
 
-        if self.cnnType == 'ResNet50':
-            cnn_pretrained_model = models.resnet50(pretrained=True)
-            cnn_pretrained_model.to(self.device)
-        elif self.cnnType == 'Resnet152':
-            cnn_pretrained_model = models.resnet152(pretrained=True)
-            cnn_pretrained_model.to(self.device)            
-        elif self.cnnType == 'Vgg19':
-            cnn_pretrained_model = models.vgg19(pretrained=True)
-            cnn_pretrained_model.to(self.device)
-        elif self.cnnType == 'Vgg16':
-            cnn_pretrained_model = models.vgg16(pretrained=True)
-            cnn_pretrained_model.to(self.device)
-        elif self.cnnType == 'DenseNet121':
-            cnn_pretrained_model = models.densenet121(pretrained=True)
-            cnn_pretrained_model.to(self.device)
-        elif self.cnnType == 'Inception_v3':
-            cnn_pretrained_model = models.inception_v3(pretrained=True)
-            cnn_pretrained_model.to(self.device)
-        else:
-            raise ValueError(
-                    f"""\
-                        {self.cnnType} is not a valid type.
-                        """)
-        return cnn_pretrained_model
 
     def extract_image_feat(
         self,
@@ -86,10 +59,8 @@ class image_feature:
         img_to_tensor = transforms.Compose(transform_list)
 
         feat_df = pd.DataFrame()
-        if self.cnnType=='ViT':
-            model = self.load_vit_model()
-        else:
-            model=self.load_cnn_model()
+        model = self.load_vit_model()
+
         model.eval()
         
 
