@@ -19,6 +19,10 @@ The primary datasets used are as follows:
 3) Data pertaining to Glioblastoma, Breast Cancer, and Mouse Brain, available on the 10X Genomics website; and
 4) Mouse Olfactory Bulb Data by Stereo-seq and other related spatial transcriptomics data, accessible via the spatialLIBD website (https://www.spatialomics.org/SpatialDB.).
 
+## Pre-trained VIT model download link
+'''
+https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/jx_vit_base_patch16_224_in21k-e5005f0a.pth
+'''
 
 
 ## example
