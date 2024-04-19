@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-
-# @Author: ChangXu
-# @E-mail: xuchang0214@163.com
-# @Last Modified by:   ChangXu
-# @Last Modified time: 2021-04-22 08:42:54 23:22:34
-# -*- coding: utf-8 -*-
-
 import math
 import numpy as np
 import pandas as pd
