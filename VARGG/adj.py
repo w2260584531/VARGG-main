@@ -1,12 +1,3 @@
-#!/usr/bin/env python
-"""
-# Author: ChangXu
-# Created Time : Mon 23 Apr
-# File Name: cal_graph.py
-# Description:`
-
-"""
-
 import os,sys
 import numpy as np
 import torch
@@ -17,7 +8,6 @@ from torch_sparse import SparseTensor
 import networkx as nx
 
 
-##### refer to https://github.com/mustafaCoskunAgu/SiGraC/blob/main/DGI/utils/process.py
 
 
 # edgeList to edgeDict
@@ -34,14 +24,7 @@ class  graph():
         self.rad_cutoff = rad_cutoff
 
     def graph_computing(self):
-        """
-        Input: -adata.obsm['spatial']
-               -distanceType:
-                    -if get more information, https://docs.scipy.org/doc/scipy/reference/generated/scipy.
-                     spatial.distance.cdist.html#scipy.spatial.distance.cdist
-               -k: number of neighbors
-        Return: graphList
-        """
+
         dist_list = ["euclidean","braycurtis","canberra","mahalanobis","chebyshev","cosine",
                     "jensenshannon","mahalanobis","minkowski","seuclidean","sqeuclidean","hamming",
                     "jaccard", "jensenshannon", "kulsinski", "mahalanobis","matching", "minkowski", 
