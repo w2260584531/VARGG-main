@@ -28,44 +28,6 @@ https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/j
 '''
 
 
-## example
-'''
-import os,sys
-os.environ['CUDA_VISIBLE_DEVICES'] = '2'
-
-from VARGG import running
-import scanpy as sc
-
-
-
-data_path = "/data/VARGG-main/data/DLPFC"
-
-data_name = '151673' 
-
-save_path = "/data/VARGG-main/Results" 
-
-n_domains = 7 
-
-process = running(save_path = save_path,pre_epochs = 1000, epochs = 1200, se_gpu = True)
-
-adata = process._get_adata(platform="Visium", data_path=data_path, data_name=data_name)
-
-adata = process._get_image_crop(adata, data_name=data_name) 
-
-adata = process._get_augment(adata, spatial_type="KDTree", use_morphological=True)
-
-graph_dict = process._get_graph(adata.obsm["spatial"], distType = "KDTree")
-
-data = process._data_process(adata, pca_n_comps =200)
-
-Vargg_embed = process._fit(
-		data = data,
-		graph_dict = graph_dict,)
-
-adata.obsm["VARGG_embed"] = Vargg_embed
-
-adata = process._get_cluster_data(adata, n_domains=n_domains, priori = True)
-
-
-sc.pl.spatial(adata, color='VARGG_refine_domain', frameon=False,spot_size=150)
-'''
+## Tutorial
+A Jupyter Notebook of the tutorial is accessible from :
+https://github.com/w2260584531/VARGG-main/tree/main/tutorial
