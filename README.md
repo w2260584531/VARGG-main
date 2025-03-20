@@ -14,10 +14,13 @@ numpy == 1.22.3
 ```
 
 The primary datasets used are as follows: 
-1) The DLPFC (Dorsolateral Prefrontal Cortex) dataset, with detailed access and specifics to be provided in subsequent publications; 
-2) Mouse Embryo Data, which can be downloaded from the China National GeneBank's Stomics platform (https://db.cngb.org/stomics/mosta);
-3) Data pertaining to Glioblastoma, Breast Cancer, and Mouse Brain, available on the 10X Genomics website; and
-4) Mouse Olfactory Bulb Data by Stereo-seq and other related spatial transcriptomics data, accessible via the spatialLIBD website (https://www.spatialomics.org/SpatialDB.).
+1) The DLPFC (Dorsolateral Prefrontal Cortex) dataset, accessible within the spatialLIBD package (http://spatial.libd.org/spatialLIBD); 
+2) 2) Data pertaining to Glioblastoma, Breast Cancer, and Mouse Brain, available on the 10X Genomics website (https://support.10xgenomics.com/spatial-gene-expression/datasets); 
+3) Mouse Embryo Data, which can be downloaded from the China National GeneBank's Stomics platform (https://db.cngb.org/stomics/mosta); 
+4) Slide-seqV2 datasets are available at the Broad Institute Single Cell Portal at https://singlecell.broadinstitute.org/single_cell/study/SCP815/highly-sensitive-spatial-transcriptomics-at-near-cellular-resolution-with-slide-seqv2#study-summary; 
+5) The processed Stereo-seq data from mouse olfactory bulb tissue is accessible on https://github.com/JinmiaoChenLab/SEDR_analyses; 
+6) The MERFISH dataset is available from https://github.com/zhengli09/BASS-Analysis.  
+
 
 ## Pre-trained VIT model download link
 '''
