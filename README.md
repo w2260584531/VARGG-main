@@ -14,10 +14,13 @@ numpy == 1.22.3
 ```
 
 The primary datasets used are as follows: 
-1) The DLPFC (Dorsolateral Prefrontal Cortex) dataset, with detailed access and specifics to be provided in subsequent publications; 
-2) Mouse Embryo Data, which can be downloaded from the China National GeneBank's Stomics platform (https://db.cngb.org/stomics/mosta);
-3) Data pertaining to Glioblastoma, Breast Cancer, and Mouse Brain, available on the 10X Genomics website; and
-4) Mouse Olfactory Bulb Data by Stereo-seq and other related spatial transcriptomics data, accessible via the spatialLIBD website (https://www.spatialomics.org/SpatialDB.).
+1) The DLPFC (Dorsolateral Prefrontal Cortex) dataset, accessible within the spatialLIBD package (http://spatial.libd.org/spatialLIBD); 
+2) 2) Data pertaining to Glioblastoma, Breast Cancer, and Mouse Brain, available on the 10X Genomics website (https://support.10xgenomics.com/spatial-gene-expression/datasets); 
+3) Mouse Embryo Data, which can be downloaded from the China National GeneBank's Stomics platform (https://db.cngb.org/stomics/mosta); 
+4) Slide-seqV2 datasets are available at the Broad Institute Single Cell Portal at https://singlecell.broadinstitute.org/single_cell/study/SCP815/highly-sensitive-spatial-transcriptomics-at-near-cellular-resolution-with-slide-seqv2#study-summary; 
+5) The processed Stereo-seq data from mouse olfactory bulb tissue is accessible on https://github.com/JinmiaoChenLab/SEDR_analyses; 
+6) The MERFISH dataset is available from https://github.com/zhengli09/BASS-Analysis.  
+
 
 ## Pre-trained VIT model download link
 '''
@@ -25,44 +28,6 @@ https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-vitjx/j
 '''
 
 
-## example
-'''
-import os,sys
-os.environ['CUDA_VISIBLE_DEVICES'] = '2'
-
-from VARGG import running
-import scanpy as sc
-
-
-
-data_path = "/data/VARGG-main/data/DLPFC"
-
-data_name = '151673' 
-
-save_path = "/data/VARGG-main/Results" 
-
-n_domains = 7 
-
-process = running(save_path = save_path,pre_epochs = 1000, epochs = 1200, se_gpu = True)
-
-adata = process._get_adata(platform="Visium", data_path=data_path, data_name=data_name)
-
-adata = process._get_image_crop(adata, data_name=data_name) 
-
-adata = process._get_augment(adata, spatial_type="KDTree", use_morphological=True)
-
-graph_dict = process._get_graph(adata.obsm["spatial"], distType = "KDTree")
-
-data = process._data_process(adata, pca_n_comps =200)
-
-Vargg_embed = process._fit(
-		data = data,
-		graph_dict = graph_dict,)
-
-adata.obsm["VARGG_embed"] = Vargg_embed
-
-adata = process._get_cluster_data(adata, n_domains=n_domains, priori = True)
-
-
-sc.pl.spatial(adata, color='VARGG_refine_domain', frameon=False,spot_size=150)
-'''
+## Tutorial
+A Jupyter Notebook of the tutorial is accessible from :
+https://github.com/w2260584531/VARGG-main/tree/main/tutorial
